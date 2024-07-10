@@ -17,10 +17,41 @@
         h1 {
             text-align: center;
             margin-bottom: 40px;
-            text-align: center;
-            background: linear-gradient(60deg, #960fb8, #ffc60b);
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
+            color: #f4f4f4;
+        }
+
+        .word {
+            display: inline-block;
+            animation: colorShift 8s infinite linear;
+        }
+
+        .word:nth-child(1) {
+            animation-delay: 0s;
+        }
+
+        .word:nth-child(2) {
+            animation-delay: 1s;
+        }
+
+        .word:nth-child(3) {
+            animation-delay: 2s;
+        }
+
+        .word:nth-child(4) {
+            animation-delay: 3s;
+        }
+
+        .word:nth-child(5) {
+            animation-delay: 4s;
+        }
+
+        @keyframes colorShift {
+            0%, 20%, 100% {
+                color: #ffc60b;
+            }
+            40%, 60% {
+                color: #960fb8;
+            }
         }
 
         table {
@@ -72,7 +103,9 @@
 </head>
 
 <body>
-    <h1>Timeline Quảng Cáo Khóa Học</h1>
+    <h1>
+        <span class="word">Timeline</span> <span class="word">Quảng</span> <span class="word">Cáo</span> <span class="word">Khóa</span> <span class="word">Học</span>
+    </h1>
     <table>
         <thead>
             <tr>
@@ -84,13 +117,14 @@
             </tr>
         </thead>
         <tbody>
-            <th>Trạng thái:</th>
-            <td class="red-text yellow-text green-text">Chưa hoàn thành</td>
-            <td class="red-text yellow-text green-text">Chưa hoàn thành</td>
-            <td class="red-text yellow-text green-text">Chưa hoàn thành</td>
-            <td class="red-text yellow-text green-text">Chưa hoàn thành</td>
+            <tr>
+                <th>Trạng thái:</th>
+                <td class="red-text">Chưa hoàn thành</td>
+                <td class="red-text">Chưa hoàn thành</td>
+                <td class="red-text">Chưa hoàn thành</td>
+                <td class="red-text">Chưa hoàn thành</td>
+            </tr>
         </tbody>
-        <!-- <i class="bi bi-check2"></i> -->
     </table>
 </body>
 <script>
