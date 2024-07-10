@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html lang="vi">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
+    <title>Timeline Quảng Cáo Khóa Học</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f4f4f4;
+            margin: 0;
+            padding: 20px;
+        }
+
+        h1 {
+            text-align: center;
+            margin-bottom: 40px;
+            text-align: center;
+            background: linear-gradient(60deg, #960fb8, #ffc60b);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 0 auto;
+            background-color: #ffffff;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        }
+
+        thead th {
+            background-color: #007bff;
+            color: #ffffff;
+            padding: 10px;
+            text-align: left;
+        }
+
+        tbody th,
+        tbody td {
+            padding: 10px;
+            text-align: left;
+            border-top: 1px solid #dddddd;
+        }
+
+        tbody th {
+            background-color: #f4f4f4;
+        }
+
+        tr:nth-child(even) {
+            background-color: #f9f9f9;
+        }
+
+        tr:hover {
+            background-color: #f1f1f1;
+        }
+
+        .red-text {
+            color: red;
+        }
+
+        .yellow-text {
+            color: rgb(255, 183, 0);
+        }
+
+        .green-text {
+            color: green;
+        }
+    </style>
+</head>
+
+<body>
+    <h1>Timeline Quảng Cáo Khóa Học</h1>
+    <table>
+        <thead>
+            <tr>
+                <th></th>
+                <th>Quay video (CN: 14/07)</th>
+                <th>Chỉnh sửa video (T2: 15/07)</th>
+                <th>Bàn giao video (T5: 18/07)</th>
+            </tr>
+        </thead>
+        <tbody>
+            <th>Trạng thái:</th>
+            <td class="red-text yellow-text green-text">Chưa hoàn thành</td>
+            <td class="red-text yellow-text green-text">Chưa hoàn thành</td>
+            <td class="red-text yellow-text green-text">Chưa hoàn thành</td>
+        </tbody>
+        <!-- <i class="bi bi-check2"></i> -->
+    </table>
+</body>
+<script>
+    document.addEventListener('DOMContentLoaded', function () {
+        var statusCells = document.querySelectorAll('tbody td');
+
+        statusCells.forEach(function (cell) {
+            var statusText = cell.textContent.trim();
+
+            cell.classList.remove('red-text', 'yellow-text', 'green-text');
+
+            if (statusText === 'Chưa hoàn thành') {
+                cell.classList.add('red-text');
+            } else if (statusText === 'Đang thực hiện') {
+                cell.classList.add('yellow-text');
+            } else if (statusText === 'Hoàn thành') {
+                cell.classList.add('green-text');
+            }
+        });
+    });
+</script>
+
+</html>
