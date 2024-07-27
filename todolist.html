@@ -1,0 +1,159 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.2/css/all.min.css">
+    <title>Document</title>
+</head>
+<style>
+    * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+        font-family: 'Poppins', sans-serif;
+    }
+
+    :root {
+        --tim: #8052ec;
+        --hong: #d161ff
+    }
+
+    body {
+        height: 100vh;
+        background: linear-gradient(135deg,
+                var(--tim),
+                var(--hong));
+        display: flex;
+        align-items: center;
+        justify-content: center;
+    }
+
+    .container {
+        width: 370px;
+        background-color: #fff;
+        height: 100px;
+        border-radius: 10px;
+        cursor: pointer;
+    }
+
+    .task-input {
+        display: flex;
+    }
+
+    .task-input input {
+        height: 30px;
+        width: 240px;
+        border-radius: 7px;
+        border: 1px solid #ddd;
+        outline: none;
+    }
+
+    #push {
+        height: 30px;
+        width: 50px;
+        cursor: pointer;
+        border-radius: 7px;
+        background-color: #b660d6;
+        border: none;
+        outline: none;
+        color: #ddd;
+        font-size: 14px;
+    }
+
+    .task-input input,
+    #push {
+        margin: 20px;
+    }
+
+    #tasks-add {
+        margin-top: 50px;
+        width: 370px;
+        height: auto;
+        background-color: #fff;
+        border-radius: 4px;
+        cursor: pointer;
+        box-shadow: 0 15px 30px rgba(0, 0, 0, 0.3);
+    }
+
+    .task {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        background-color: #fff;
+        height: 37px;
+        margin-bottom: 5px;
+        padding-bottom: 10px;
+        padding: 5px 0px;
+        border-radius: 4px;
+        cursor: pointer;
+        border-bottom: 1px solid #ddd;
+    }
+
+    #push:active {
+        padding: 5px;
+    }
+
+    .delete {
+        cursor: pointer;
+        padding: 6px;
+        border-top-right-radius: 4px;
+        background-color: #b660d6;
+        border: none;
+        outline: none;
+        font-size: 18px;
+    }
+
+    .completed {
+        text-decoration: line-through;
+    }
+</style>
+
+<body>
+    <div class="container">
+        <div id="newtask" class="task-input">
+            <input type="text" placeholder="Nhập Vào Việc Cần Làm...">
+            <button id="push">Thêm</button>
+        </div>
+        <div id="tasks-add">
+        </div>
+    </div>
+</body>
+<script>
+    document.querySelector("#push").onclick = function () {
+        var checkInput = document.querySelector('#newtask input').value.trim();
+        if (checkInput.length === 0) {
+            alert('Bạn Đã nhập không đúng,Vui lòng nhập công việc của bạn cho đúng');
+        } else {
+            document.querySelector("#tasks-add").innerHTML += `
+                <div class="task">
+                    <span id="tasks-name">
+                        ${document.querySelector("#newtask input").value}
+                    </span>
+                    <button class="delete">
+                        <i class="far fa-trash-alt"></i>
+                    </button>
+                </div>
+            `;
+            var currentTasks = document.querySelectorAll(".delete");
+            for (var i = 0; i < currentTasks.length; i++) {
+                currentTasks[i].onclick = function () {
+                    this.parentNode.remove();
+                }
+            }
+            var task = document.querySelectorAll(".task");
+            for (var i = 0; i < task.length; i++) {
+                task[i].onclick = function () {
+                    this.classList.toggle("completed")
+                }
+            }
+            document.querySelector("#newtask input").value = "";
+        }
+    }
+</script>
+
+</html>
+<!-- backticks -->
+<!-- <i class="far fa-trash-alt"></i> -->

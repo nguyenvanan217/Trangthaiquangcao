@@ -1,0 +1,175 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
+    <title>Document</title>
+</head>
+<style>
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    border: 2px solid greenyellow;
+}
+body {
+    width: 1200px;
+    margin: 0 auto;
+}
+.main {
+    position: relative;
+    width: 100%;
+    height:700px;
+    /* overflow: hidden; */
+}
+.main img {
+    cursor: pointer;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    object-position: center;
+}
+.bottom-img {
+    gap: 10px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    position: absolute;
+    top: 80%;
+    left: 50%;
+    transform: translateX(-50%);
+}
+.bottom-img img {
+    cursor: pointer;
+    width: 300px;
+    height: 180px;
+    object-fit: cover;
+    object-position: center;
+}
+.button {
+    width: 100%;
+    z-index: 1;
+    font-size: 50px;
+    cursor: pointer;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    display: flex;
+    justify-content: space-between;
+    color: red;
+}
+.bottom-img .img-1 {
+position: relative;
+overflow: hidden;
+}
+.img-1 {
+    overflow: hidden;
+}
+
+@keyframes slideIn {
+    from {
+        width: 0;
+    }
+    to {
+        width: 100%;
+    }
+}
+.img-two,.img-three {
+    display: none;
+}
+@keyframes fadeIn {
+    from { opacity: 0; }
+    to { opacity: 1; }
+}
+
+.fade-in {
+    animation: fadeIn 0.3s;
+}
+.img-three {
+    display: flex;
+    justify-content: center;
+    text-align: center;
+}
+</style>
+<body>
+    <div class="main">
+        <div class="img-one">
+            <img src="https://c4.wallpaperflare.com/wallpaper/295/163/719/anime-anime-boys-picture-in-picture-kimetsu-no-yaiba-kamado-tanjir%C5%8D-hd-wallpaper-preview.jpg" alt="">
+            <div class="img-two">
+                <img src="
+            https://c4.wallpaperflare.com/wallpaper/246/739/689/digital-digital-art-artwork-illustration-abstract-hd-wallpaper-preview.jpg" alt="">
+            </div>
+           <div class="img-three">
+            <img src="https://c4.wallpaperflare.com/wallpaper/965/883/624/manga-one-piece-wallpaper-preview.jpg" alt="">
+        </div>
+       <div class="button">
+            <div class="left">
+                <i class="bi bi-chevron-left"></i>
+            </div>
+            <div class="right">
+                <i class="bi bi-chevron-right"></i>
+            </div>
+       </div>
+    </div>
+    <div class="bottom-img">
+        <div class="img-1">
+            <img src="https://c4.wallpaperflare.com/wallpaper/295/163/719/anime-anime-boys-picture-in-picture-kimetsu-no-yaiba-kamado-tanjir%C5%8D-hd-wallpaper-preview.jpg" alt="">
+        </div>
+        <div class="img-2">
+            <img src="
+        https://c4.wallpaperflare.com/wallpaper/246/739/689/digital-digital-art-artwork-illustration-abstract-hd-wallpaper-preview.jpg" alt="">
+        </div>
+       <div class="img-3">
+        <img src="https://c4.wallpaperflare.com/wallpaper/965/883/624/manga-one-piece-wallpaper-preview.jpg" alt="">
+       </div>
+    </div>
+</body>
+<script>
+    const listImg = [
+        "https://c4.wallpaperflare.com/wallpaper/295/163/719/anime-anime-boys-picture-in-picture-kimetsu-no-yaiba-kamado-tanjir%C5%8D-hd-wallpaper-preview.jpg",
+        "https://c4.wallpaperflare.com/wallpaper/246/739/689/digital-digital-art-artwork-illustration-abstract-hd-wallpaper-preview.jpg",
+        "https://c4.wallpaperflare.com/wallpaper/965/883/624/manga-one-piece-wallpaper-preview.jpg"
+    ];
+    let currentIndex = 0; // Thêm biến để theo dõi chỉ số ảnh hiện tại
+
+    var btnLeft = document.querySelector('.left i');
+    var btnRight = document.querySelector('.right i');
+    imgOne=document.querySelector('.img-one img')
+    imgTwo=document.querySelector('.img-two img')
+    imgThree=document.querySelector('.img-three img')
+    // Xử lý sự kiện khi click vào nút bên trái
+    btnLeft.addEventListener('click', function() {
+        currentIndex = (currentIndex - 1 + listImg.length) % listImg.length; // Cập nhật chỉ số ảnh
+        updateImages(); // Cập nhật ảnh dựa trên chỉ số mới
+    });
+
+    //xử lý sự kiện khi click vào nút bên phải
+    btnRight.addEventListener('click', function() {
+        currentIndex = (currentIndex + 1 + listImg.length) % listImg.length; // Cập nhật chỉ số ảnh
+        updateImages(); // Cập nhật ảnh dựa trên chỉ số mới
+    });
+    function updateImages() {
+        imgOne.src = listImg[currentIndex];
+        imgTwo.src = listImg[(currentIndex + 1) % listImg.length];
+        imgThree.src = listImg[(currentIndex + 2) % listImg.length];
+    }
+
+    // Gọi hàm này một lần để khởi tạo ảnh ban đầu
+    function nextImage() {
+    currentIndex = (currentIndex + 1) % listImg.length; // Cập nhật chỉ số ảnh tiếp theo
+    updateImages(); // Cập nhật ảnh
+    }setInterval(nextImage,3000);
+    
+    // Xử lý sự kiện khi click vào ảnh dưới
+    const bottomImgs = document.querySelectorAll('.bottom-img img');
+    bottomImgs.forEach((img, index) => {
+        img.addEventListener('click', function() {
+            currentIndex = index; // Cập nhật chỉ số ảnh
+            updateImages(); // Cập nhật ảnh dựa trên chỉ số mới
+        });
+    });
+
+</script>
+</html>

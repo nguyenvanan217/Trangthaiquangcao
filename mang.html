@@ -1,0 +1,161 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <h2>javascript</h2>
+<script>
+    var courses=[
+        {
+            id:1,
+            name:'javascript',
+            coin:250,
+            coinText: 'Gia 250'
+        },
+        {
+            id:2,
+            name:'HTML,CSS',
+            coin:0,
+            coinText: 'Gia 0'
+        },
+        {
+            id:3,
+            name:'Python',
+            coin:250,
+            coinText: 'Gia 250'
+        },
+        {
+            id:4,
+            name:'Python',
+            coin:0,
+            coinText: 'Gia 0'
+        },
+    ]
+    // reduce
+    // những gì reduce làm được thì vòng lặp for cũng làm được
+    // cách thông thường để in ra tổng coin bằng vòng lặp
+    // var totalCoin=0;
+    // for(var course of courses){
+    //     totalCoin=totalCoin + course.coin
+    // }
+    // console.log(totalCoin)
+    // cách để in ra tổng coin bằng reduce
+                        //tích trữ   //giá trị cái hiện tại  //cái index  //courses
+    // function totalCoin(accumulator, currentValue,currentIdex, originArray){
+    //     return accumulator + currentValue.coin
+    // }
+    // var totalCoin = courses.reduce(totalCoin,0)
+    // console.log(totalCoin)
+        
+
+        // Lần thực hiện đầu tiên:
+        // accumulator ban đầu là 0.
+        // currentValue là phần tử đầu tiên của mảng courses: { id: 1, name: 'javascript', coin: 250, coinText: 'Gia 250' }.
+        // accumulator + currentValue.coin sẽ là: 0 + 250 = 250.
+        // Giá trị mới của accumulator là 250.
+        // Lần thực hiện thứ hai:
+
+        // accumulator là giá trị tích lũy từ lần thực hiện trước đó (250).
+        // currentValue là phần tử thứ hai của mảng courses: { id: 2, name: 'HTML,CSS', coin: 0, coinText: 'Gia 0' }.
+        // accumulator + currentValue.coin sẽ là: 250 + 0 = 250.
+        // Giá trị mới của accumulator là 250.
+        // Lần thực hiện thứ ba:
+
+        // accumulator là giá trị tích lũy từ lần thực hiện trước đó (250).
+        // currentValue là phần tử thứ ba của mảng courses: { id: 3, name: 'Python', coin: 250, coinText: 'Gia 250' }.
+        // accumulator + currentValue.coin sẽ là: 250 + 250 = 500.
+        // Giá trị mới của accumulator là 500.
+        // Lần thực hiện thứ tư:
+
+        // accumulator là giá trị tích lũy từ lần thực hiện trước đó (500).
+        // currentValue là phần tử cuối cùng của mảng courses: { id: 4, name: 'Python', coin: 0, coinText: 'Gia 0' }.
+        // accumulator + currentValue.coin sẽ là: 500 + 0 = 500.
+        // Giá trị mới của accumulator là 500.
+
+
+
+
+    // courses.forEach(function(course,index){
+    //     console.log(index,course)
+    // });
+
+
+    // every tất cả phải thỏa mãn là true
+    // var isFree=courses.every(function(course,index){
+    //     return course.coin===0;
+    // });
+    // console.log(isFree)
+
+
+
+    // some chỉ cần một cái thỏa mãn là true
+    // var isFree=courses.some(function(course,index){
+    //     return course.coin===0;
+    // });
+    // console.log(isFree)
+    // var isFree=courses.some(function(course,index){
+    //     return course.coin===0;
+    // });
+    // console.log(isFree)  
+
+
+
+    // find tìm một thằng có tên là Python
+    // var course=courses.find(function(course,index){
+    //     return course.name==='Python';
+    // });
+    // console.log(course)
+     // tìm nhiều thằng có tên là Python
+    // var listCourse=courses.filter(function(course,index){
+    //     return course.name==='Python';
+    // });
+    // console.log(listCourse)
+
+
+    // map là tách ra rồi thêm vô
+    // cách 1
+    // var courseHandler=courses.map(function(course){
+    //     return {
+    //         id: course.id,
+    //         name:`Khóa Học: ${course.name}`,
+    //         coin:course.coin,
+    //         coinText: `Giá: ${course.coin}`
+    //     }
+    // })
+    // console.log(courseHandler)
+    // //cách 2
+    // function courseHandler(course){
+    //     return {
+    //         id: course.id,
+    //         name:`Khóa học: ${course.name}`,
+    //         coin: course.coin,
+    //         coinText: `Giá: ${course.coin}`
+    //     }
+    // }
+    // var newcourse=courses.map(courseHandler)
+    // console.log(newcourse)
+    
+
+
+
+    // includes là tìm coi thử trong một chuỗi, hoặc một mảng có cái từ nớ ko nếu có trả về true , số là vị trí bắt đầu tìm 
+    // var title='Reponsive web design'
+    // console.log(title.includes('web',11))
+    // var array=["Python","PHP","RUBY"]
+    // console.log(array.includes('RUBY'))
+
+
+    // call back
+    function myFunction(param){
+        param('Học LẬP TRÌNH')
+    }
+    function myCallback(value){
+        console.log('Value: ',value);
+    }
+    myFunction(myCallback)
+</script>
+</body>
+</html>

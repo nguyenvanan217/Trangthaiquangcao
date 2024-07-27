@@ -1,0 +1,9 @@
+<button id="myButton">Click me!</button>
+<script>
+    document.getElementById("myButton").addEventListener("click", function(event) {
+    // `event` là đối tượng sự kiện
+    // `event.target` là phần tử mà sự kiện đã xảy ra (trong trường hợp này là nút "myButton")
+    console.log(event.target.tag); // Sẽ in ra phần tử nút trong console
+});
+
+</script>

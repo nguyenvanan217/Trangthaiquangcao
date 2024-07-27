@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html>
+<body>
+<h1>JavaScript Arrays</h1>
+<button onclick="myfunction()">
+    Nhấn vào đây để 
+    thêm 1 thứ
+</button>
+<p id="demo"></p>
+<script>
+    const Nhacuaantrongtuonglai=["Baty", "Mecedec","Vongon"];
+    document.getElementById("demo").innerHTML=Nhacuaantrongtuonglai;
+    function myfunction(){
+        Nhacuaantrongtuonglai.push("embengoan");
+        document.getElementById("demo").innerHTML = Nhacuaantrongtuonglai;
+    }
+</script>
+</body>
+</html>

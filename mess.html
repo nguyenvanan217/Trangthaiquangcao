@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.2/css/all.min.css">
+    <title>Document</title>
+</head>
+<style>
+    * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+    }
+
+    li {
+        list-style: none;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        gap: 10px;
+    }
+
+    .mess,
+    .list-mess {
+        text-align: center;
+        margin-top: 40px;
+    }
+</style>
+
+<body>
+    <div class="container">
+        <div class="mess">
+            <input type="text">
+            <button>add</button>
+        </div>
+        <div class="list-mess">
+        </div>
+    </div>
+    <script>
+        let change = document.querySelector('.mess button');
+        let messageInput = document.querySelector('.mess input');
+
+        const addMessage = () => {
+            let value = messageInput.value;
+            if (value.trim().length === 0) {
+                alert('Vui lòng gõ tin nhắn trước khi gửi');
+            } else {
+                document.querySelector('.list-mess').innerHTML += `
+                    <div class="list-mess-item">
+                        <li>${value}
+                        <button class="delete">
+                            <i class="far fa-trash-alt"></i>
+                        </button>
+                        </li>
+                    </div>
+                `;
+                document.querySelector('.delete').onclick = () => {
+                    let parents = document.querySelector('.list-mess-item')
+                    parents.remove();
+                }
+            }
+            messageInput.value = '';
+        };
+
+        change.onclick = addMessage;
+
+        messageInput.addEventListener('keyup', (event) => {
+            if (event.key === 'Enter') {
+                addMessage();
+            }
+        });
+    </script>
+</body>
+
+</html>
